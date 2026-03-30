@@ -126,7 +126,7 @@ function App() {
   return (
     <BrowserRouter>
     <div className="app">
-      <Header />
+      <Header weatherData={weatherData}/>
       <div className="content">
         <Routes>
           <Route path="/" element={<Current />} />
