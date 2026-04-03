@@ -1,13 +1,13 @@
 export default function HourlyPreview( {weatherData} ) {
   return (
     <div className="hourly-preview">
-      <h3>Hourly Forecast</h3>
+      <h3>Hourly</h3>
       <div className="hourly-preview-boxes">
         {weatherData.hourly.slice(0, 5).map((hour, index) => (
           <div key={index} className="hourly-preview-box">
             <p>{new Date(hour.dt * 1000).getHours()}:00</p>
-            <p>{hour.weather[0].icon}</p>
-            <p>{hour.temp}°F</p>
+            <img src={`http://openweathermap.org/img/wn/${hour.weather[0].icon}.png`} alt={hour.weather[0].description} />
+            <p>{hour.temp}°C</p>
             <p>{hour.weather[0].main}</p>
           </div>
         ))}
