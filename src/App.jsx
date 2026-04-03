@@ -65,6 +65,98 @@ function App() {
             }
          ],
          "pop":0.15
+      },
+      {
+         "dt":1684929600,
+         "temp":290.45,
+         "feels_like":290.78,
+         "pressure":1015,
+         "humidity":86,
+         "dew_point":289.12,
+         "uvi":0,
+         "clouds":62,
+         "visibility":10000,
+         "wind_speed":2.92,
+         "wind_deg":92,
+         "wind_gust":6.45,
+         "weather":[
+            {
+               "id":803,
+               "main":"Clouds",
+               "description":"broken clouds",
+               "icon":"04n"
+            }
+         ],
+         "pop":0.12
+      },
+      {
+         "dt":1684933200,
+         "temp":289.87,
+         "feels_like":290.15,
+         "pressure":1016,
+         "humidity":84,
+         "dew_point":288.45,
+         "uvi":0.5,
+         "clouds":48,
+         "visibility":10000,
+         "wind_speed":3.12,
+         "wind_deg":89,
+         "wind_gust":6.78,
+         "weather":[
+            {
+               "id":802,
+               "main":"Clouds",
+               "description":"scattered clouds",
+               "icon":"03d"
+            }
+         ],
+         "pop":0.08
+      },
+      {
+         "dt":1684936800,
+         "temp":294.23,
+         "feels_like":294.56,
+         "pressure":1014,
+         "humidity":78,
+         "dew_point":288.92,
+         "uvi":4.2,
+         "clouds":35,
+         "visibility":10000,
+         "wind_speed":3.45,
+         "wind_deg":94,
+         "wind_gust":7.12,
+         "weather":[
+            {
+               "id":802,
+               "main":"Clouds",
+               "description":"scattered clouds",
+               "icon":"03d"
+            }
+         ],
+         "pop":0.05
+      },
+      {
+         "dt":1684940400,
+         "temp":296.78,
+         "feels_like":297.23,
+         "pressure":1013,
+         "humidity":72,
+         "dew_point":288.34,
+         "uvi":7.8,
+         "clouds":25,
+         "visibility":10000,
+         "wind_speed":3.78,
+         "wind_deg":96,
+         "wind_gust":7.45,
+         "weather":[
+            {
+               "id":801,
+               "main":"Clouds",
+               "description":"few clouds",
+               "icon":"02d"
+            }
+         ],
+         "pop":0.02
       }
    ],
    "daily":[
@@ -130,9 +222,9 @@ function App() {
       <Header weatherData={weatherData}/>
       <div className="content">
         <Routes>
-          <Route path="/" element={<Current />} />
-          <Route path="/hourly" element={<Hourly />} />
-          <Route path="/5-day" element={<FiveDay />} />
+          <Route path="/" element={<Current weatherData={weatherData} />} />
+          <Route path="/hourly" element={<Hourly weatherData={weatherData} />} />
+          <Route path="/5-day" element={<FiveDay weatherData={weatherData} />} />
         </Routes>
       </div>
     </div>
