@@ -1,4 +1,5 @@
 import { BrowserRouter as Router, Routes, Route, Link, BrowserRouter } from "react-router-dom";
+import './app.css';
 import Header from "./components/Header";
 import Current from "./components/Current";
 import Hourly from "./components/Hourly";
