@@ -13,19 +13,19 @@ export default function Hourly( {weatherData} ) {
             <div className={styles['hourly-main']}>
               <div className={styles['hourly-icon-temp']}>
                 <img src={`http://openweathermap.org/img/wn/${hour.weather[0].icon}.png`} alt={hour.weather[0].description} />
-                <p>{hour.temp}°C</p>
+                <p>{Math.round(hour.temp)}°C</p>
               </div>
               <div className={styles['hourly-description']}>
-                <p>{hour.weather[0].description}</p>
-                <p>Feels Like: {hour.feels_like}°C</p>
+                <p className={styles['capitalize']}>{hour.weather[0].description}</p>
+                <p>Feels Like: {Math.round(hour.feels_like)}°C</p>
               </div>
               <div className={styles['hourly-details']}>
-                <p>Wind: {hour.wind_speed} mph</p>
-                <p>Wind Gust: {hour.wind_gust} mph</p>
-                <p>Humidity: {hour.humidity}%</p>
+                <p>Wind: {Math.round(hour.wind_speed * 3.6)} km/h</p>
+                <p>Wind Gust: {Math.round(hour.wind_gust * 3.6)} km/h</p>
+                <p>Humidity: {Math.round(hour.humidity)}%</p>
               </div>
               <div className={styles['hourly-pop']}>
-                <p>Precipitation: {hour.pop * 100}%</p>
+                <p>Precipitation: {Math.round(hour.pop * 100)}%</p>
               </div>
             </div>
           </div>

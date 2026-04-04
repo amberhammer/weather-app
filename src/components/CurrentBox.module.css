@@ -8,3 +8,7 @@
   width: 400px;
   height: 220px;
 }
+
+.capitalize {
+  text-transform: capitalize;
+}

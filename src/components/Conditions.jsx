@@ -11,20 +11,20 @@ export default function Conditions( {weatherData} ) {
         </div>
         <div className={styles['conditions-item']}>
           <h4>Wind</h4>
-          <p>Speed: {weatherData.current.wind_speed} mph</p>
-          <p>Gust: {weatherData.current.wind_gust} mph</p>
+          <p>Speed: {Math.round(weatherData.current.wind_speed * 3.6)} km/h</p>
+          <p>Gust: {Math.round(weatherData.current.wind_gust * 3.6)} km/h</p>
         </div>
         <div className={styles['conditions-item']}>
           <h4>Humidity</h4>
-          <p>{weatherData.current.humidity}%</p>
+          <p>{Math.round(weatherData.current.humidity)}%</p>
         </div>
         <div className={styles['conditions-item']}>
           <h4>Pressure</h4>
-          <p>{weatherData.current.pressure} hPa</p>
+          <p>{Math.round(weatherData.current.pressure)} hPa</p>
         </div>
         <div className={styles['conditions-item']}>
           <h4>Visibility</h4>
-          <p>{weatherData.current.visibility} mi</p>
+          <p>{Math.round(weatherData.current.visibility)} m</p>
         </div>
         <div className={styles['conditions-item']}>
           <h4>UV Index</h4>

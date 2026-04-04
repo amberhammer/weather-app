@@ -9,7 +9,7 @@ export default function HourlyPreview( {weatherData} ) {
           <div key={index} className={styles['hourly-preview-item']}>
             <p>{new Date(hour.dt * 1000).getHours()}:00</p>
             <img src={`http://openweathermap.org/img/wn/${hour.weather[0].icon}.png`} alt={hour.weather[0].description} />
-            <p>{hour.temp}°C</p>
+            <p>{Math.round(hour.temp)}°C</p>
             <p>{hour.weather[0].main}</p>
           </div>
         ))}
