@@ -1,0 +1,10 @@
+.current-box {
+  background: var(--bg);
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  padding: 20px;
+  margin-top: 20px;
+  color: var(--text);
+  width: 400px;
+  height: 220px;
+}

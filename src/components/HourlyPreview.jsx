@@ -1,10 +1,12 @@
+import styles from './HourlyPreview.module.css'
+
 export default function HourlyPreview( {weatherData} ) {
   return (
-    <div className="hourly-preview">
+    <div className={styles['hourly-preview']}>
       <h3>Hourly</h3>
-      <div className="hourly-preview-boxes">
+      <div className={styles['hourly-preview-boxes']}>
         {weatherData.hourly.slice(0, 5).map((hour, index) => (
-          <div key={index} className="hourly-preview-box">
+          <div key={index} className={styles['hourly-preview-item']}>
             <p>{new Date(hour.dt * 1000).getHours()}:00</p>
             <img src={`http://openweathermap.org/img/wn/${hour.weather[0].icon}.png`} alt={hour.weather[0].description} />
             <p>{hour.temp}°C</p>

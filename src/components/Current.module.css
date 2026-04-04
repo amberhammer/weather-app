@@ -1,0 +1,11 @@
+.current {
+  width: 80vw;
+  margin: 0 auto;
+}
+
+.current-hourly {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  margin-top: 10px;
+}
