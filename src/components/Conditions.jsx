@@ -1,4 +1,5 @@
 import styles from './Conditions.module.css'
+import { formatTimeInTimezone } from '../utils/dateUtils';
 
 export default function Conditions( {weatherData} ) {
   return (
@@ -6,8 +7,8 @@ export default function Conditions( {weatherData} ) {
       <h3>Today's Conditions</h3>
       <div className={styles['conditions-boxes']}>
         <div className={styles['conditions-item']}>
-          <p>Sunrise: {new Date(weatherData.current.sunrise * 1000).toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' })}</p>
-          <p>Sunset: {new Date(weatherData.current.sunset * 1000).toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' })}</p>
+          <p>Sunrise: {formatTimeInTimezone(weatherData.current.sunrise, weatherData.timezone_offset, { hour: 'numeric', minute: '2-digit' })}</p>
+          <p>Sunset: {formatTimeInTimezone(weatherData.current.sunset, weatherData.timezone_offset, { hour: 'numeric', minute: '2-digit' })}</p>
         </div>
         <div className={styles['conditions-item']}>
           <h4>Wind</h4>

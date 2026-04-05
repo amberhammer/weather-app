@@ -1,4 +1,5 @@
 import styles from './Hourly.module.css'
+import { formatTimeInTimezone } from '../utils/dateUtils';
 
 export default function Hourly( {weatherData} ) {
   return (
@@ -8,7 +9,7 @@ export default function Hourly( {weatherData} ) {
         {weatherData.hourly.slice(0, 24).map((hour, index) => (
           <div key={index} className={styles['hourly-item']}>
             <div className={styles['hourly-time']}>
-              <p>{new Date(hour.dt * 1000).toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' })}</p>
+              <p>{formatTimeInTimezone(hour.dt, weatherData.timezone_offset, { hour: 'numeric', minute: '2-digit' })}</p>
             </div>
             <div className={styles['hourly-main']}>
               <div className={styles['hourly-icon-temp']}>

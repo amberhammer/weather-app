@@ -46,7 +46,7 @@ export default function Header( {weatherData, currentLocation, onSearch} ) {
           <option value="imperial">°F</option>
         </select>
       </div>
-      {weatherData?.alerts?.length > 0 && <Alert alert={weatherData.alerts} />}
+      {weatherData?.alerts?.length > 0 && <Alert alert={weatherData.alerts} timezoneOffset={weatherData.timezone_offset} />}
     </header>
   )
 }

@@ -1,4 +1,5 @@
 import styles from './HourlyPreview.module.css'
+import { formatTimeInTimezone } from '../utils/dateUtils';
 
 export default function HourlyPreview( {weatherData} ) {
   return (
@@ -7,7 +8,7 @@ export default function HourlyPreview( {weatherData} ) {
       <div className={styles['hourly-preview-boxes']}>
         {weatherData.hourly.slice(0, 5).map((hour, index) => (
           <div key={index} className={styles['hourly-preview-item']}>
-            <p>{new Date(hour.dt * 1000).getHours()}:00</p>
+            <p>{formatTimeInTimezone(hour.dt, weatherData.timezone_offset, { hour: 'numeric' })}</p>
             <img src={`http://openweathermap.org/img/wn/${hour.weather[0].icon}.png`} alt={hour.weather[0].description} />
             <p>{Math.round(hour.temp)}°C</p>
             <p>{hour.weather[0].main}</p>

@@ -1,7 +1,7 @@
 import styles from './FiveDay.module.css';
+import { formatDateInTimezone } from '../utils/dateUtils';
 
 export default function FiveDay( {weatherData} ) {
-  const options = { weekday: 'long', month: 'long', day: 'numeric' };
 
   return (
     <div className={styles['five-day']}>
@@ -10,7 +10,7 @@ export default function FiveDay( {weatherData} ) {
         {weatherData.daily.slice(1, 6).map((day, index) => (
           <div key={index} className={styles['five-day-item']}>
             <div className={styles['five-day-date']}>
-              <p>{new Date(day.dt * 1000).toLocaleDateString('en-US', options)}</p>
+              <p>{formatDateInTimezone(day.dt, weatherData.timezone_offset)}</p>
             </div>
             <div className={styles['five-day-main']}>
               <div className={styles['five-day-icon-temp']}>
