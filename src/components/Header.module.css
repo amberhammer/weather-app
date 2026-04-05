@@ -26,7 +26,7 @@
 
 .nav-bar nav {
   display: flex;
-  gap: 75px;
+  gap: 65px;
 }
 
 .nav-bar nav li {
@@ -41,6 +41,14 @@
 .nav-bar nav li a {
   text-decoration: none;
   color: var(--text);
+}
+
+.current-location {
+  width: 400px;
+  flex-shrink: 0;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
 }
 
 .units-dropdown {

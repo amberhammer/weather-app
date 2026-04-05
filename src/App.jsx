@@ -11,7 +11,7 @@ const API_KEY = import.meta.env.VITE_API_KEY;
 function App() {
 
   const [weatherData, setWeatherData] = useState(null);
-  const [currentLocation, setCurrentLocation] = useState('Vancouver');
+  const [currentLocation, setCurrentLocation] = useState('Vancouver, BC, CA');
 
   const fetchWeatherByCoordinates = async (lat, lon) => {
     const response = await fetch(`https://api.openweathermap.org/data/3.0/onecall?lat=${lat}&lon=${lon}&appid=${API_KEY}&units=metric`);
@@ -38,8 +38,11 @@ function App() {
       const { lat, lon } = geoData[0];
       console.log(`Found ${cityName} at coordinates: lat=${lat}, lon=${lon}`);
 
-      const formattedCityName = `${geoData[0].name}, ${geoData[0].state}, ${geoData[0].country}`;
-      setCurrentLocation(formattedCityName);
+      if (geoData[0].state) {
+        setCurrentLocation(`${geoData[0].name}, ${geoData[0].state}, ${geoData[0].country}`);
+      } else {
+        setCurrentLocation(`${geoData[0].name}, ${geoData[0].country}`);
+      }
 
       await fetchWeatherByCoordinates(lat, lon);
     } catch (error) {

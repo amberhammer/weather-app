@@ -29,7 +29,7 @@ export default function Header( {weatherData, currentLocation, onSearch} ) {
         </form>
       </div>
       <div className={styles['nav-bar']}>
-        <p>Current Location: {currentLocation}</p>
+        <p className={styles['current-location']}>Current Location: {currentLocation}</p>
         <nav>
             <li>
             <Link to="/">Current</Link>
