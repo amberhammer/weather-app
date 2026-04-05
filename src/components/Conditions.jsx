@@ -12,7 +12,7 @@ export default function Conditions( {weatherData} ) {
         <div className={styles['conditions-item']}>
           <h4>Wind</h4>
           <p>Speed: {Math.round(weatherData.current.wind_speed * 3.6)} km/h</p>
-          <p>Gust: {Math.round(weatherData.current.wind_gust * 3.6)} km/h</p>
+          {weatherData.current.wind_gust && <p>Gust: {Math.round(weatherData.current.wind_gust * 3.6)} km/h</p>}
         </div>
         <div className={styles['conditions-item']}>
           <h4>Humidity</h4>
