@@ -2,7 +2,7 @@ import { useState } from 'react'
 import { Link } from 'react-router-dom'
 import styles from './Header.module.css'
 
-export default function Header( {weatherData, onSearch} ) {
+export default function Header( {currentLocation, onSearch} ) {
   const [searchInput, setSearchInput] = useState('');
 
   const handleSearch = (e) => {
@@ -28,7 +28,7 @@ export default function Header( {weatherData, onSearch} ) {
         </form>
       </div>
       <div className={styles['nav-bar']}>
-        <p>Current Location: {weatherData.timezone}</p>
+        <p>Current Location: {currentLocation}</p>
         <nav>
             <li>
             <Link to="/">Current</Link>
