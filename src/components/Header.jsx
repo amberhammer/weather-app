@@ -1,12 +1,31 @@
+import { useState } from 'react'
 import { Link } from 'react-router-dom'
 import styles from './Header.module.css'
 
-export default function Header( {weatherData} ) {
+export default function Header( {weatherData, onSearch} ) {
+  const [searchInput, setSearchInput] = useState('');
+
+  const handleSearch = (e) => {
+    e.preventDefault();
+    if (searchInput.trim()) {
+      onSearch(searchInput);
+      setSearchInput('');
+    }
+  };
+
   return (
     <header>
       <div className={styles['site-header']}>
         <h1>Weather App</h1>
-        <input className={styles['search-bar']} type="text" placeholder="Search for a city..." />
+        <form onSubmit={handleSearch}>
+          <input 
+            className={styles['search-bar']} 
+            type="text" 
+            placeholder="Search for a city..." 
+            value={searchInput}
+            onChange={(e) => setSearchInput(e.target.value)}
+          />
+        </form>
       </div>
       <div className={styles['nav-bar']}>
         <p>Current Location: {weatherData.timezone}</p>

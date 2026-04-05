@@ -12,25 +12,50 @@ function App() {
 
   const [weatherData, setWeatherData] = useState(null);
 
+  const fetchWeatherByCoordinates = async (lat, lon) => {
+    const response = await fetch(`https://api.openweathermap.org/data/3.0/onecall?lat=${lat}&lon=${lon}&appid=${API_KEY}&units=metric`);
+    const data = await response.json();
+    console.log(data);
+    setWeatherData(data);
+  };
+
+  const handleCitySearch = async (cityName) => {
+    if (!API_KEY) {
+      console.error('API_KEY is not set. Please check your .env file.');
+      return;
+    }
+
+    try {
+      const geoResponse = await fetch(`http://api.openweathermap.org/geo/1.0/direct?q=${cityName}&limit=5&appid=${API_KEY}`);
+      const geoData = await geoResponse.json();
+
+      if (geoData.length === 0) {
+        console.error('City not found');
+        return;
+      }
+
+      const { lat, lon } = geoData[0];
+      console.log(`Found ${cityName} at coordinates: lat=${lat}, lon=${lon}`);
+
+      await fetchWeatherByCoordinates(lat, lon);
+    } catch (error) {
+      console.error('Error fetching weather data:', error);
+    }
+  };
+
   useEffect(() => {
     if (!API_KEY) {
       console.error('API_KEY is not set. Please check your .env file.');
       return;
     }
-    const fetchWeatherData = async () => {
-      const response = await fetch(`https://api.openweathermap.org/data/3.0/onecall?lat=33.44&lon=-94.04&appid=${API_KEY}&units=metric`);
-      const data = await response.json();
-      console.log(data);
-      setWeatherData(data);
-    };
-
-    fetchWeatherData();
+    // Load default location on mount
+    fetchWeatherByCoordinates(49.26, -123.11);
   }, []);
 
   return (
     <BrowserRouter>
     <div className="app">
-      {weatherData && <Header weatherData={weatherData}/>}
+      {weatherData && <Header weatherData={weatherData} onSearch={handleCitySearch}/>}
       <div className="content">
         <Routes>
           <Route path="/" element={weatherData && <Current weatherData={weatherData} />} />
