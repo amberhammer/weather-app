@@ -59,7 +59,7 @@ function App() {
   return (
     <BrowserRouter>
     <div className="app">
-      {weatherData && <Header currentLocation={currentLocation} onSearch={handleCitySearch}/>}
+      {weatherData && <Header weatherData={weatherData} currentLocation={currentLocation} onSearch={handleCitySearch}/>}
       <div className="content">
         <Routes>
           <Route path="/" element={weatherData && <Current weatherData={weatherData} />} />
