@@ -1,4 +1,4 @@
-import { useState, useEffect } from "react";
+import { useState, useEffect, useCallback } from "react";
 import { BrowserRouter as Router, Routes, Route, Link, BrowserRouter } from "react-router-dom";
 import './app.css';
 import Header from "./components/Header";
@@ -13,12 +13,12 @@ function App() {
   const [weatherData, setWeatherData] = useState(null);
   const [currentLocation, setCurrentLocation] = useState('Vancouver, BC, CA');
 
-  const fetchWeatherByCoordinates = async (lat, lon) => {
+  const fetchWeatherByCoordinates = useCallback(async (lat, lon) => {
     const response = await fetch(`https://api.openweathermap.org/data/3.0/onecall?lat=${lat}&lon=${lon}&appid=${API_KEY}&units=metric`);
     const data = await response.json();
     console.log(data);
     setWeatherData(data);
-  };
+  }, []);
 
   const handleCitySearch = async (cityName) => {
     if (!API_KEY) {
@@ -55,8 +55,13 @@ function App() {
       console.error('API_KEY is not set. Please check your .env file.');
       return;
     }
-    // Load default location on mount
-    fetchWeatherByCoordinates(49.26, -123.11);
+    const loadDefaultLocation = async () => {
+      const response = await fetch(`https://api.openweathermap.org/data/3.0/onecall?lat=49.26&lon=-123.11&appid=${API_KEY}&units=metric`);
+      const data = await response.json();
+      console.log(data);
+      setWeatherData(data);
+    };
+    loadDefaultLocation();
   }, []);
 
   return (
