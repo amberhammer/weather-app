@@ -1,7 +1,7 @@
 import styles from './Hourly.module.css'
 import { formatTimeInTimezone } from '../utils/dateUtils';
 
-export default function Hourly( {weatherData} ) {
+export default function Hourly( {weatherData, units, unitLabels} ) {
   return (
     <div className={styles['hourly']}>
       <h2>Hourly Forecast</h2>
@@ -21,8 +21,8 @@ export default function Hourly( {weatherData} ) {
                 <p>Feels Like: {Math.round(hour.feels_like)}°C</p>
               </div>
               <div className={styles['hourly-details']}>
-                <p>Wind: {Math.round(hour.wind_speed * 3.6)} km/h</p>
-                <p>Wind Gust: {Math.round(hour.wind_gust * 3.6)} km/h</p>
+                <p>Wind: {Math.round(units === 'metric' ? hour.wind_speed * 3.6 : hour.wind_speed)} {unitLabels.speed}</p>
+                <p>Wind Gust: {Math.round(units === 'metric' ? hour.wind_gust * 3.6 : hour.wind_gust)} {unitLabels.speed}</p>
                 <p>Humidity: {Math.round(hour.humidity)}%</p>
               </div>
               <div className={styles['hourly-pop']}>

@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom'
 import Alert from './Alert';
 import styles from './Header.module.css'
 
-export default function Header( {weatherData, currentLocation, onSearch, hasError} ) {
+export default function Header( {weatherData, currentLocation, onSearch, hasError, handleUnitsChange, units} ) {
   const [searchInput, setSearchInput] = useState('');
 
   const handleSearch = (e) => {
@@ -22,6 +22,7 @@ export default function Header( {weatherData, currentLocation, onSearch, hasErro
           <input 
             className={styles['search-bar']} 
             type="text" 
+            name="search"
             placeholder="Search for a city..." 
             value={searchInput}
             onChange={(e) => setSearchInput(e.target.value)}
@@ -41,7 +42,7 @@ export default function Header( {weatherData, currentLocation, onSearch, hasErro
             <Link to="/5-day">5 Day</Link>
             </li>
         </nav>
-        <select className={styles['units-dropdown']} name="units" id="units">
+        <select className={styles['units-dropdown']} name="units" id="units" onChange={handleUnitsChange} value={units}>
           <option value="metric">°C</option>
           <option value="imperial">°F</option>
         </select>

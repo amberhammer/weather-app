@@ -16,10 +16,11 @@ function App() {
   const [currentLocation, setCurrentLocation] = useState('Vancouver, BC, CA');
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
+  const [units, setUnits] = useState("metric");
 
   const fetchWeatherByCoordinates = useCallback(async (lat, lon) => {
    try {
-      const response = await fetch(`https://api.openweathermap.org/data/3.0/onecall?lat=${lat}&lon=${lon}&appid=${API_KEY}&units=metric`);
+      const response = await fetch(`https://api.openweathermap.org/data/3.0/onecall?lat=${lat}&lon=${lon}&appid=${API_KEY}&units=${units}`);
       const data = await response.json();
       console.log(data);
       setWeatherData(data);
@@ -32,7 +33,7 @@ function App() {
       setCurrentLocation('');
       return;
     }  
-  }, []);
+  }, [units]);
 
   const handleCitySearch = async (cityName) => {
     setLoading(true);
@@ -74,6 +75,25 @@ function App() {
     }
   };
 
+  const handleUnitsChange = (e) => {
+    const newUnits = e.target.value;
+    setUnits(newUnits);
+    if (weatherData) {
+      fetchWeatherByCoordinates(weatherData.lat, weatherData.lon);
+    }
+  };
+
+  const unitLabels = {
+   metric: {
+      temp: "°C",
+      speed: "km/h"
+   },
+   imperial: {
+      temp: "°F",
+      speed: "mph"
+   }
+  };
+
   useEffect(() => {
     if (!API_KEY) {
       console.error('API_KEY is not set. Please check your .env file.');
@@ -96,18 +116,25 @@ function App() {
     loadDefaultLocation();
   }, []);
 
+  useEffect(() => {
+    if (weatherData) {
+      fetchWeatherByCoordinates(weatherData.lat, weatherData.lon);
+    }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [units]);
+
   return (
     <BrowserRouter>
     <div className="app">
-      {weatherData && <Header weatherData={weatherData} currentLocation={currentLocation} onSearch={handleCitySearch} hasError={!!error}/>}
+      {weatherData && <Header weatherData={weatherData} currentLocation={currentLocation} onSearch={handleCitySearch} hasError={!!error} handleUnitsChange={handleUnitsChange} units={units} />}
       <div className="content">
         {loading && <div className="loading"><Loading /></div>}
         {error && <div className="error"><Error error={error} /></div>}
         {!loading && !error && (
           <Routes>
-            <Route path="/" element={weatherData && <Current weatherData={weatherData} />} />
-            <Route path="/hourly" element={weatherData && <Hourly weatherData={weatherData} />} />
-            <Route path="/5-day" element={weatherData && <FiveDay weatherData={weatherData} />} />
+            <Route path="/" element={weatherData && <Current weatherData={weatherData} unitLabels={unitLabels[units]} units={units} />} />
+            <Route path="/hourly" element={weatherData && <Hourly weatherData={weatherData} unitLabels={unitLabels[units]} units={units} />} />
+            <Route path="/5-day" element={weatherData && <FiveDay weatherData={weatherData} unitLabels={unitLabels[units]} units={units} />} />
           </Routes>
         )}
       </div>

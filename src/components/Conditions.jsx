@@ -1,7 +1,7 @@
 import styles from './Conditions.module.css'
 import { formatTimeInTimezone } from '../utils/dateUtils';
 
-export default function Conditions( {weatherData} ) {
+export default function Conditions( {weatherData, units, unitLabels} ) {
   return (
     <div className={styles['conditions']}>
       <h3>Today's Conditions</h3>
@@ -12,8 +12,8 @@ export default function Conditions( {weatherData} ) {
         </div>
         <div className={styles['conditions-item']}>
           <h4>Wind</h4>
-          <p>Speed: {Math.round(weatherData.current.wind_speed * 3.6)} km/h</p>
-          {weatherData.current.wind_gust && <p>Gust: {Math.round(weatherData.current.wind_gust * 3.6)} km/h</p>}
+          <p>Speed: {Math.round(units === 'metric' ? weatherData.current.wind_speed * 3.6 : weatherData.current.wind_speed)} {unitLabels.speed}</p>
+          {weatherData.current.wind_gust && <p>Gust: {Math.round(units === 'metric' ? weatherData.current.wind_gust * 3.6 : weatherData.current.wind_gust)} {unitLabels.speed}</p>}
         </div>
         <div className={styles['conditions-item']}>
           <h4>Humidity</h4>
