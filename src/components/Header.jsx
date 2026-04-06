@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom'
 import Alert from './Alert';
 import styles from './Header.module.css'
 
-export default function Header( {weatherData, currentLocation, onSearch} ) {
+export default function Header( {weatherData, currentLocation, onSearch, hasError} ) {
   const [searchInput, setSearchInput] = useState('');
 
   const handleSearch = (e) => {
@@ -46,7 +46,7 @@ export default function Header( {weatherData, currentLocation, onSearch} ) {
           <option value="imperial">°F</option>
         </select>
       </div>
-      {weatherData?.alerts?.length > 0 && <Alert alert={weatherData.alerts} timezoneOffset={weatherData.timezone_offset} />}
+      {!hasError && weatherData?.alerts?.length > 0 && <Alert alert={weatherData.alerts} timezoneOffset={weatherData.timezone_offset} />}
     </header>
   )
 }
