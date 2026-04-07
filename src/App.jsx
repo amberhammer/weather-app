@@ -7,6 +7,7 @@ import Error from "./components/Error";
 import Current from "./components/Current";
 import Hourly from "./components/Hourly";
 import FiveDay from "./components/FiveDay";
+import Footer from "./components/Footer";
 
 const API_KEY = import.meta.env.VITE_API_KEY;
 
@@ -138,6 +139,7 @@ function App() {
           </Routes>
         )}
       </div>
+      <Footer />
     </div>
   </BrowserRouter>
   )
