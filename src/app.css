@@ -1,19 +1,36 @@
 :root {
     --text: #08060d;
     --text-h: #ffffff;
-    --bg: #fff;
-    --border: gray;
-    --accent: lightblue;
+    --primary: white;
+    --bg: lightgray;
+    --border: darkgray;
+    --accent: #90D5FF;
     --accent-bg: black;
-    --accent-border: blue;
+    --accent-border: #40B7FF;
     --alert: yellow;
-    --shadow: rgba(0, 0, 0, 0.1) 0 10px 15px -3px, rgba(0, 0, 0, 0.05) 0 4px 6px -2px;
+    --shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
     }
 
 html, body {
     box-sizing: border-box;
     font-family: Arial, Helvetica, sans-serif;
     font-size: 16px;
-    background-color: var(--bg);
+    background-color: f1f1f1;
     color: var(--text);
+}
+
+#root {
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+}
+
+.app {
+    display: flex;
+    flex-direction: column;
+    flex: 1;
+}
+
+.content {
+    flex: 1;
 }

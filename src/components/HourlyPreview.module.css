@@ -17,4 +17,32 @@
   align-items: center;
   width: 100px;
   height: 200px;
+  box-shadow: var(--shadow);
+}
+
+/* Tablet media query */
+@media (max-width: 768px) {
+  .hourly-preview-boxes {
+    margin-top: 15px;
+    padding-bottom: 10px;
+  }
+
+  .hourly-preview-item {
+    width: 90px;
+    height: 180px;
+    padding: 8px;
+    margin-right: 8px;
+    font-size: 0.85rem;
+  }
+}
+
+/* Mobile media query */
+@media (max-width: 480px) {
+  .hourly-preview-item {
+    width: 80px;
+    height: 160px;
+    padding: 8px;
+    margin-right: 8px;
+    font-size: 0.75rem;
+  }
 }

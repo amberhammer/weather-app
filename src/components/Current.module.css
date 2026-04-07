@@ -1,6 +1,11 @@
 .current {
-  width: 80vw;
+  width: 85vw;
   margin: 0 auto;
+  background-color: var(--primary);
+  padding: 20px;
+  border-left: 1px solid var(--border);
+  border-right: 1px solid var(--border);
+  box-shadow: var(--shadow);
 }
 
 .current-hourly {
@@ -8,4 +13,32 @@
   flex-direction: row;
   justify-content: space-between;
   margin-top: 10px;
+}
+
+/* Tablet media query */
+@media (max-width: 768px) {
+  .current {
+    width: 90vw;
+    padding: 15px;
+  }
+
+  .current-hourly {
+    flex-direction: column;
+    gap: 20px;
+  }
+}
+
+/* Mobile media query */
+@media (max-width: 480px) {
+  .current {
+    width: 95vw;
+    padding: 10px;
+    border-left: none;
+    border-right: none;
+  }
+
+  .current-hourly {
+    flex-direction: column;
+    gap: 15px;
+  }
 }

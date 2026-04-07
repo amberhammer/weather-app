@@ -7,8 +7,28 @@
   color: var(--text);
   width: 400px;
   height: 220px;
+  box-shadow: var(--shadow);
 }
 
 .capitalize {
   text-transform: capitalize;
+}
+
+/* Tablet media query */
+@media (max-width: 768px) {
+  .current-box {
+    width: 100%;
+    height: auto;
+    padding: 15px;
+  }
+}
+
+/* Mobile media query */
+@media (max-width: 480px) {
+  .current-box {
+    width: 100%;
+    height: auto;
+    padding: 15px;
+    margin-top: 10px;
+  }
 }
