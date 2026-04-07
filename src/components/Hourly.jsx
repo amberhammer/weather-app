@@ -14,11 +14,11 @@ export default function Hourly( {weatherData, units, unitLabels} ) {
             <div className={styles['hourly-main']}>
               <div className={styles['hourly-icon-temp']}>
                 <img src={`http://openweathermap.org/img/wn/${hour.weather[0].icon}.png`} alt={hour.weather[0].description} />
-                <p>{Math.round(hour.temp)}°C</p>
+                <p>{Math.round(hour.temp)}{unitLabels.temp}</p>
               </div>
               <div className={styles['hourly-description']}>
                 <p className={styles['capitalize']}>{hour.weather[0].description}</p>
-                <p>Feels Like: {Math.round(hour.feels_like)}°C</p>
+                <p>Feels Like: {Math.round(hour.feels_like)}{unitLabels.temp}</p>
               </div>
               <div className={styles['hourly-details']}>
                 <p>Wind: {Math.round(units === 'metric' ? hour.wind_speed * 3.6 : hour.wind_speed)} {unitLabels.speed}</p>
