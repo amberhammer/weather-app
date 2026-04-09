@@ -22,6 +22,8 @@
   padding: 5px 20px;
   background-color: var(--accent);
   color: var(--text);
+  width: 100%;
+  box-sizing: border-box;
 }
 
 .nav-bar nav {
@@ -62,12 +64,22 @@
   font-size: 0.8rem;
 }
 
+@media (max-width: 1024px) {
+  .current-location {
+    width: 250px;
+  }
+}
+
 /* Tablet media query */
 @media (max-width: 768px) {
   .site-header {
     flex-direction: column;
     gap: 15px;
     padding: 15px;
+  }
+
+  .site-header h1 {
+    margin-bottom: 0;
   }
 
   .search-bar {
@@ -81,11 +93,14 @@
     flex-direction: column;
     padding: 10px;
     gap: 10px;
+    box-sizing: border-box;
   }
 
   .nav-bar nav {
     gap: 40px;
     width: 100%;
+    justify-content: center;
+    margin-bottom: 10px;
   }
 
   .current-location {

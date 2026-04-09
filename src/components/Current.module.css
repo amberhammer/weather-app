@@ -15,11 +15,21 @@
   margin-top: 10px;
 }
 
+@media (max-width: 1024px) {
+  .current-hourly {
+    flex-direction: column;
+    gap: 20px;
+  }
+}
+
 /* Tablet media query */
 @media (max-width: 768px) {
   .current {
-    width: 90vw;
+    width: 100%;
     padding: 15px;
+    border-left: none;
+    border-right: none;
+    box-sizing: border-box;
   }
 
   .current-hourly {
@@ -31,10 +41,11 @@
 /* Mobile media query */
 @media (max-width: 480px) {
   .current {
-    width: 95vw;
+    width: 100%;
     padding: 10px;
     border-left: none;
     border-right: none;
+    box-sizing: border-box;
   }
 
   .current-hourly {

@@ -6,12 +6,21 @@
   margin-top: 20px;
   color: var(--text);
   width: 400px;
-  height: 220px;
+  height: 264px;
   box-shadow: var(--shadow);
+  box-sizing: border-box;
 }
 
 .capitalize {
   text-transform: capitalize;
+}
+
+@media (max-width: 1024px) {
+  .current-box {
+    width: 100%;
+    height: auto;
+    padding: 20px;
+  }
 }
 
 /* Tablet media query */

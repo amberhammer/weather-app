@@ -50,3 +50,35 @@
 .capitalize {
   text-transform: capitalize;
 }
+
+/* Tablet media query */
+@media (max-width: 768px) {
+  .five-day {
+    width: 100%;
+    padding: 15px;
+    border-left: none;
+    border-right: none;
+    box-sizing: border-box;
+  }
+
+  .five-day-item {
+    height: auto;
+  }
+
+  .five-day-main {
+    flex-direction: column;
+    align-items: center;
+    gap: 10px;
+  }
+}
+
+/* Mobile media query */
+@media (max-width: 480px) {
+  .five-day {
+    width: 100%;
+    padding: 10px;
+    border-left: none;
+    border-right: none;
+    box-sizing: border-box;
+  }
+}

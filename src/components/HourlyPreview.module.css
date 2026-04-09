@@ -1,8 +1,13 @@
+.hourly-preview {
+  margin-left: 20px;
+}
+
 .hourly-preview-boxes {
   display: flex;
   overflow-x: auto;
   padding-bottom: 10px;
   margin-top: 20px;
+  box-sizing: border-box;
 }
 
 .hourly-preview-item {
@@ -20,6 +25,16 @@
   box-shadow: var(--shadow);
 }
 
+@media (max-width: 1024px) {
+  .hourly-preview {
+    margin: 0;
+  }
+
+  .hourly-preview-boxes {
+    justify-content: center;
+  }
+}
+
 /* Tablet media query */
 @media (max-width: 768px) {
   .hourly-preview-boxes {
@@ -28,8 +43,8 @@
   }
 
   .hourly-preview-item {
-    width: 90px;
-    height: 180px;
+    /* width: 90px;
+    height: 180px; */
     padding: 8px;
     margin-right: 8px;
     font-size: 0.85rem;

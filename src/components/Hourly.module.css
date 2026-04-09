@@ -50,3 +50,35 @@
 .capitalize {
   text-transform: capitalize;
 }
+
+/* Tablet media query */
+@media (max-width: 768px) {
+  .hourly {
+    width: 100%;
+    padding: 15px;
+    border-left: none;
+    border-right: none;
+    box-sizing: border-box;
+  }
+
+  .hourly-item {
+    height: auto;
+  }
+
+  .hourly-main {
+    flex-direction: column;
+    align-items: center;
+    gap: 10px;
+  }
+}
+
+/* Mobile media query */
+@media (max-width: 480px) {
+  .hourly {
+    width: 100%;
+    padding: 10px;
+    border-left: none;
+    border-right: none;
+    box-sizing: border-box;
+  }
+}
